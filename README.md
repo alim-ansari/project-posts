@@ -30,8 +30,12 @@ Below every post is a comment section wherein user can submit their comment and 
 #### Besides Feed Tab there is My Posts tab.
 
 In My Posts Tab there includes all the posts done by the current account user.
+
+### At first it will show a message to add a new post. 
+
+When user clicks on it, a modal opens and user can submit their post.
  
-Below Feed and My Posts there is a button given below for user to add their own post.
+Below Feed and My Posts there is a button given below for user to add their own post with same functionality.
 
 #### On top of the posts there is a search bar.
 
