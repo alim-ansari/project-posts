@@ -17,7 +17,7 @@ This is a submission project for Kennect Technologies
 
 #### This project's first page is Log In / Sign In page where in user can create an account or else already log in to previous account.
 
-### User Authentication has been implemented
+### User Authentication has been implemented and token gets expried after 24 hours
 
 All basic validation has been implemented in login form and after submitting the details... The user will be taken to the feed page.
 
