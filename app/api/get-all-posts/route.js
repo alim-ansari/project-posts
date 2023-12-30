@@ -13,15 +13,12 @@ import Post from "@/app/models/post";
  */
 export async function POST(req, res) {
   try {
-    console.log("CONNECTING TO MONGO");
     await connectMongo();
-    console.log("CONNECTED TO MONGO");
-    console.log("CREATING DOCUMENT");
+
     const getAllPosts = await Post.find({});
-    console.log(getAllPosts);
+
     return NextResponse.json({ posts: getAllPosts });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error });
   }
 }

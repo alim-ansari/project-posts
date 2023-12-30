@@ -15,17 +15,14 @@ import Comment from "@/app/models/comment";
 export async function POST(req, res) {
   try {
     const data = await req.json();
-    console.log("CONNECTING TO MONGO");
+
     await connectMongo();
-    console.log("CONNECTED TO MONGO");
-    console.log("CREATING DOCUMENT");
-    console.log(data);
+
     const getPost = await Post.findById(data.id);
     const getComments = await Comment.find({ id: data.id });
-    console.log(getComments);
+
     return NextResponse.json({ post: getPost, comments: getComments });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error });
   }
 }

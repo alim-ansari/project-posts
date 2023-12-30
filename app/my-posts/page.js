@@ -19,7 +19,7 @@ const Route = async () => {
   const cookieStore = cookies();
   const token = cookieStore.get("token")?.value;
   const posts = await loadPosts(token);
-  console.log(posts);
+
   return (
     <div className="p-3">
       <Tab />

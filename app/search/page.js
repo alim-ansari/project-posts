@@ -21,7 +21,7 @@ const Search = () => {
           { headers: { token } }
         );
         if (res.data) setLoading(false);
-        console.log(res.data);
+
         setPosts(res.data.posts);
         setComments(res.data.comments);
       }

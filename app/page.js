@@ -11,7 +11,7 @@ export default function Home() {
 
   const formSubmit = async (name, userName, password) => {
     const res = await axios.post("/api/add-user", { name, userName, password });
-    console.log(res.data);
+
     if (res.data.error) {
       setErr({ ...err, ...res.data });
       setTimeout(
@@ -19,7 +19,6 @@ export default function Home() {
         3000
       );
     } else if (res.data.success) {
-      console.log("success");
       Cookie.set("token", res.data.token);
       window.location.href = "/feed";
     }

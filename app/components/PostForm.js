@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const PostForm = ({ nopost, posts, token }) => {
   const router = useRouter();
-  console.log(posts);
+
   const [post, setPost] = useState("");
   const submitForm = async (post) => {
     const req = await axios.post(
@@ -13,7 +13,7 @@ const PostForm = ({ nopost, posts, token }) => {
       { post },
       { headers: { token } }
     );
-    console.log(req.data);
+
     if (req.data.success) window.location.href = "/feed";
   };
   return (

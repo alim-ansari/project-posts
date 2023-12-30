@@ -15,18 +15,15 @@ import Comment from "@/app/models/comment";
 export async function POST(req, res) {
   try {
     const data = await req.json();
-    console.log("CONNECTING TO MONGO");
+
     await connectMongo();
-    console.log("CONNECTED TO MONGO");
-    console.log("CREATING DOCUMENT");
-    console.log(data);
+
     const regex = new RegExp(data.input, "i");
     const getPost = await Post.find({ post: { $regex: regex } });
     const getComments = await Comment.find({ text: { $regex: regex } });
-    console.log(getComments);
+
     return NextResponse.json({ posts: getPost, comments: getComments });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error });
   }
 }

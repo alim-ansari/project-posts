@@ -22,7 +22,6 @@ const Page = () => {
     loadPosts(token);
   }, [token]);
 
-  console.log(posts);
   return (
     <div className="p-3">
       <Tab />

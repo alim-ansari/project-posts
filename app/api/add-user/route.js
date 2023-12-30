@@ -11,12 +11,11 @@ export async function POST(req, res) {
   try {
     const data = await req.json();
     const { name, userName, password } = data;
-    console.log("CONNECTING TO MONGO");
+
     await connectMongo();
-    console.log("CONNECTED TO MONGO");
-    console.log("CREATING DOCUMENT");
+
     const regex = /^(?=[a-zA-Z0-9._]{2,40}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
-    console.log(data);
+
     if (!name || name.length < 2 || name.length > 60)
       return NextResponse.json({
         error: true,
@@ -38,14 +37,14 @@ export async function POST(req, res) {
         password: "Password should be in between 8 to 60 characters",
       });
     const existingUser = await User.findOne({ userName });
-    console.log(existingUser);
+
     if (!existingUser) {
       try {
         const hash = await argon2.hash(password);
-        console.log(hash);
+
         data.password = hash;
         const user = await User.create(data);
-        console.log(user);
+
         const token = jwt.sign(
           {
             name: user.name,
@@ -55,12 +54,9 @@ export async function POST(req, res) {
           { expiresIn: "24h" }
         );
         return NextResponse.json({ success: true, token });
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     } else {
       if (await argon2.verify(existingUser.password, password)) {
-        console.log("password match");
         const token = jwt.sign(
           {
             name: existingUser.name,
@@ -78,7 +74,6 @@ export async function POST(req, res) {
       }
     }
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error });
   }
 }

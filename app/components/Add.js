@@ -14,7 +14,7 @@ const Add = () => {
       { post },
       { headers: { token } }
     );
-    console.log(req.data);
+
     if (req.data.success) window.location.href = "/feed";
   };
   return (

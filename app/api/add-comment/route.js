@@ -14,14 +14,12 @@ export async function POST(req, res) {
   try {
     let token = req.headers.get("token");
     const { name, userName } = getUserName(token);
-    console.log(name, userName);
+
     const data = await req.json();
     // const { name, userName, password } = data;
-    console.log("CONNECTING TO MONGO");
+
     await connectMongo();
-    console.log("CONNECTED TO MONGO");
-    console.log("CREATING DOCUMENT");
-    console.log(data);
+
     const addcomment = await Comment.create({
       id: data.id,
       userName,
@@ -34,7 +32,6 @@ export async function POST(req, res) {
       return NextResponse.json({ comments: getComments });
     }
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error });
   }
 }

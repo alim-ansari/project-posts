@@ -12,7 +12,6 @@ const Post = () => {
     const id = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
-    console.log(id);
 
     async function loadPosts() {
       const res = await axios.post(
@@ -31,7 +30,7 @@ const Post = () => {
       { text, id: post?._id },
       { headers: { token } }
     );
-    console.log(req.data);
+
     setText("");
     setComments(req.data.comments);
   };
