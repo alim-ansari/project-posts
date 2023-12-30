@@ -15,20 +15,7 @@ export async function middleware(req) {
   } else if (req.nextUrl.pathname == "/") {
     return NextResponse.redirect(new URL("/feed", req.url));
   }
-
-  // let cookie = req.cookies.get("token");
-  //
-
-  // // Setting cookies on the response using the `ResponseCookies` API
-  // const response = NextResponse.next();
-
-  // response.cookies.set("decode", "decode");
-
-  //
-  // // The outgoing response will have a `Set-Cookie:vercel=fast;path=/test` header.
-
-  // return response;
 }
 export const config = {
-  matcher: ["/", "/feed", "/feed/:path*", "/my-posts"],
+  matcher: ["/", "/feed", "/feed/:path*", "/my-posts", "/search"],
 };

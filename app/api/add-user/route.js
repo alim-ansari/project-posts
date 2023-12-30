@@ -16,12 +16,12 @@ export async function POST(req, res) {
 
     const regex = /^(?=[a-zA-Z0-9._]{2,40}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
 
-    if (!name || name.length < 2 || name.length > 60)
+    if (!name || name.length < 2 || name.length > 40)
       return NextResponse.json({
         error: true,
         name: "Name should be in between 2 to 40 characters",
       });
-    if (!userName || userName.length < 2 || userName.length > 60)
+    if (!userName || userName.length < 2 || userName.length > 40)
       return NextResponse.json({
         error: true,
         userName: "User Name should be in between 2 to 40 characters",
