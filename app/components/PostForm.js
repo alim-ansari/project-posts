@@ -47,7 +47,7 @@ const PostForm = ({ nopost, posts, token }) => {
       </dialog>
       {nopost ? (
         <>
-          <div className="flex justify-center items-center min-h-[70vw]">
+          <div className="flex justify-center gap-2 items-center min-h-[70vw]">
             <div className="card w-96 bg-base-100 shadow-xl">
               <div className="card-body">
                 <h2 className="text-center text-2xl">
@@ -69,7 +69,7 @@ const PostForm = ({ nopost, posts, token }) => {
         </>
       ) : (
         <>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap gap-2">
             {posts.map((post, i) => (
               <div className="card w-96 bg-base-100 shadow-xl" key={i}>
                 <div className="card-body">

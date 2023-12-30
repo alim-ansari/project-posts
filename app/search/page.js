@@ -47,7 +47,7 @@ const Search = () => {
                 ? "All Posts Found"
                 : "No Post Found"}
             </div>
-            {posts.map((post, i) => (
+            {[...posts].reverse().map((post, i) => (
               <div className="card w-full bg-base-100 shadow-xl mb-3" key={i}>
                 <div className="card-body">
                   <h2 className="card-title">
@@ -75,7 +75,7 @@ const Search = () => {
                 ? "All Comments Found"
                 : "No Comment Found"}
             </div>
-            {comments.map((comment, i) => (
+            {[...comments].reverse().map((comment, i) => (
               <div className="card w-full mb-3 bg-base-100 shadow-xl" key={i}>
                 <div className="card-body">
                   <h2 className="card-title">

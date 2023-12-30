@@ -20,13 +20,9 @@ export async function POST(req, res) {
     console.log("CONNECTED TO MONGO");
     console.log("CREATING DOCUMENT");
     console.log(data);
-    const regex = new RegExp(data.input, "i"); // i for case insensitive
-    const getPost = await Post.find({ post: { $regex: regex } }).sort({
-      date: -1,
-    });
-    const getComments = await Comment.find({ text: { $regex: regex } }).sort({
-      date: -1,
-    });
+    const regex = new RegExp(data.input, "i");
+    const getPost = await Post.find({ post: { $regex: regex } });
+    const getComments = await Comment.find({ text: { $regex: regex } });
     console.log(getComments);
     return NextResponse.json({ posts: getPost, comments: getComments });
   } catch (error) {

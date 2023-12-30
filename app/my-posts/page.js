@@ -1,19 +1,24 @@
 import React from "react";
-import { caxios } from "../utils/axios";
 import PostForm from "../components/PostForm";
 import { cookies } from "next/headers";
 import Tab from "../components/Tab";
 import Add from "../components/Add";
+import axios from "axios";
+import { domain } from "../utils/domain";
 
-async function loadPosts() {
-  const res = await caxios.post(`/api/get-posts`, {});
+async function loadPosts(token) {
+  const res = await axios.post(
+    `${domain()}/api/get-posts`,
+    {},
+    { headers: { token: token } }
+  );
   return res.data.posts;
 }
 
 const Route = async () => {
   const cookieStore = cookies();
   const token = cookieStore.get("token")?.value;
-  const posts = await loadPosts();
+  const posts = await loadPosts(token);
   console.log(posts);
   return (
     <div className="p-3">
